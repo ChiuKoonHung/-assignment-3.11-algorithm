@@ -4,13 +4,25 @@
 
 function selectionSort(array) {
   //implement code here
-  let toBeSortedArray = [];
-
+  let toBeSortedArray = array;  // O(1)
+  for(i=0; i<toBeSortedArray.length; i++) {  // O(N)
+    let currentMin = i;
+    for(j=i+1; j<toBeSortedArray.length; j++) {  // O(N)
+      if(toBeSortedArray[j] < toBeSortedArray[currentMin]) { // O(NN)
+        currentMin = j;
+      }
+    }
+    if(i !== currentMin) {  // O(NN)
+        let temp = toBeSortedArray[i];
+        toBeSortedArray[i] = toBeSortedArray[currentMin];
+        toBeSortedArray[currentMin] = temp;
+    }
+  }
   return toBeSortedArray;
 }
-// Big O Notation
-// Worse Case: ?
-// Average Case: ?
-// Best Case: ?
+// Big O Notation  O(N^2)
+// Worse Case: ?   O(N^2)
+// Average Case: ? O(N^2)
+// Best Case: ?    O(N^2)
 
 module.exports = selectionSort;
